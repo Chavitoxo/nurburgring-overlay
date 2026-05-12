@@ -8,44 +8,74 @@ body{
 }
 
 #leaderboard{
+
+    position:relative;
+
     width:820px;
+
     background:#07111b;
+
     border:2px solid #18364d;
+
     border-radius:8px;
-    overflow:hidden;
+
+    overflow:visible;
+
     box-shadow:0 0 25px rgba(0,0,0,.5);
+
 }
 
 .titlebar{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 
-    background:linear-gradient(90deg,#12344b,#1d4f6d);
+    background:linear-gradient(
+        90deg,
+        #12344b,
+        #1d4f6d
+    );
 
     padding:10px 14px;
 
     border-bottom:2px solid #2d688d;
+
 }
 
 .series{
+
     color:white;
+
     font-size:18px;
+
     font-weight:800;
+
     letter-spacing:1px;
+
 }
 
 .live{
+
     background:#16d66b;
+
     color:#fff;
+
     font-size:12px;
+
     font-weight:700;
+
     padding:5px 10px;
+
     border-radius:4px;
+
 }
 
 .header,
 .row{
+
     display:grid;
 
     grid-template-columns:
@@ -57,30 +87,113 @@ body{
     90px;
 
     align-items:center;
+
 }
 
 .header{
+
     background:#0e1f2d;
+
     color:#5ed8ff;
 
     padding:10px 12px;
 
     font-size:13px;
+
     font-weight:700;
 
     border-bottom:1px solid #244861;
+
 }
 
 .row{
+
     padding:9px 12px;
 
     color:#fff;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    background:#09141f;
+
+    transition:.2s;
+
 }
+
+.row:nth-child(even){
+
+    background:#0b1825;
+
+}
+
+.row:hover{
+
+    background:#112334;
+
+}
+
+.row div{
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+}
+
+.row div:first-child{
+
+    color:#4ad7ff;
+
+    font-weight:800;
+
+}
+
+.row div:nth-child(5){
+
+    color:#ffe082;
+
+    font-weight:700;
+
+}
+
+.row div:last-child{
+
+    color:#62ff92;
+
+    font-weight:700;
+
+}
+
+.row:nth-child(1){
+
+    border-left:5px solid #16d66b;
+
+}
+
+.row:nth-child(2){
+
+    border-left:5px solid #4ad7ff;
+
+}
+
+.row:nth-child(3){
+
+    border-left:5px solid #ffc857;
+
+}
+
 #rightpanel{
 
     position:absolute;
 
     top:0;
+
     right:-330px;
 
     width:300px;
@@ -117,7 +230,7 @@ body{
 
 #clock{
 
-    color:white;
+    color:#16d66b;
 
     font-size:34px;
 
