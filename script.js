@@ -115,7 +115,7 @@ for(let i = 0; i < 5; i++){
 
         angle:Math.random() * 360,
 
-        radius:110 + Math.random() * 20
+        radius:70 + Math.random() * 40
 
     });
 
@@ -125,15 +125,15 @@ function animateFakeCars(){
 
     fakeCars.forEach(car => {
 
-        car.angle += 0.5;
+        car.angle += 0.8;
 
         const x =
-        130 +
+        120 +
         Math.cos(car.angle * Math.PI/180)
         * car.radius;
 
         const y =
-        130 +
+        120 +
         Math.sin(car.angle * Math.PI/180)
         * car.radius;
 
