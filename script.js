@@ -34,3 +34,41 @@ async function loadTiming(){
 setInterval(loadTiming,1000);
 
 loadTiming();
+
+async function loadWeather(){
+
+    const apiKey = 'f49f608b3c3660ce3817d6574eb64124';
+
+    const lat = 50.3356;
+    const lon = 6.9475;
+
+    const url =
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    const weather =
+    data.weather[0].main;
+
+    const temp =
+    Math.round(data.main.temp);
+
+    const wind =
+    Math.round(data.wind.speed);
+
+    document.querySelector('.weatherinfo:nth-child(2)').innerHTML =
+    `🌤️ ${weather}`;
+
+    document.querySelector('.weatherinfo:nth-child(3)').innerHTML =
+    `🌡️ Track Temp: ${temp}°C`;
+
+    document.querySelector('.weatherinfo:nth-child(4)').innerHTML =
+    `💨 Wind: ${wind} km/h`;
+
+}
+
+loadWeather();
+
+setInterval(loadWeather, 60000);
