@@ -54,36 +54,36 @@ async function loadWeather(){
 
     let weatherIcon = '🌤️';
 
-if(weather.includes('rain')){
+    if(weather.includes('rain')){
 
-    weatherIcon = '🌧️';
+        weatherIcon = '🌧️';
 
-}
-else if(weather.includes('cloud')){
+    }
+    else if(weather.includes('cloud')){
 
-    weatherIcon = '☁️';
+        weatherIcon = '☁️';
 
-}
-else if(weather.includes('clear')){
+    }
+    else if(weather.includes('clear')){
 
-    weatherIcon = '☀️';
+        weatherIcon = '☀️';
 
-}
-else if(weather.includes('thunderstorm')){
+    }
+    else if(weather.includes('thunderstorm')){
 
-    weatherIcon = '⛈️';
+        weatherIcon = '⛈️';
 
-}
-else if(weather.includes('snow')){
+    }
+    else if(weather.includes('snow')){
 
-    weatherIcon = '❄️';
+        weatherIcon = '❄️';
 
-}
-else if(weather.includes('mist')){
+    }
+    else if(weather.includes('mist')){
 
-    weatherIcon = '🌫️';
+        weatherIcon = '🌫️';
 
-}
+    }
 
     const temp =
     Math.round(data.main.temp);
@@ -94,9 +94,6 @@ else if(weather.includes('mist')){
     const humidity =
     data.main.humidity;
 
-    document.querySelector('.weatherinfo:nth-child(5)').innerHTML =
-    `💧 Humidity: ${humidity}%`;
-
     document.querySelector('.weatherinfo:nth-child(2)').innerHTML =
     `${weatherIcon} ${weather.toUpperCase()}`;
 
@@ -105,6 +102,9 @@ else if(weather.includes('mist')){
 
     document.querySelector('.weatherinfo:nth-child(4)').innerHTML =
     `💨 Wind: ${wind} km/h`;
+
+    document.querySelector('.weatherinfo:nth-child(5)').innerHTML =
+    `💧 Humidity: ${humidity}%`;
 
 }
 
@@ -120,14 +120,46 @@ function updateClock(){
     const m = String(now.getMinutes()).padStart(2,'0');
     const s = String(now.getSeconds()).padStart(2,'0');
 
-    document.getElementById('clock').innerText =
+    document.getElementById('clock').textContent =
     `${h}:${m}:${s}`;
+
+    const hour = now.getHours();
+
+    let icon = '☀️';
+
+    if(hour >= 6 && hour < 12){
+
+        icon = '🌅';
+
+    }
+    else if(hour >= 12 && hour < 18){
+
+        icon = '☀️';
+
+    }
+    else if(hour >= 18 && hour < 20){
+
+        icon = '🌇';
+
+    }
+    else{
+
+        icon = '🌙';
+
+    }
+
+    document.getElementById('dayicon').textContent =
+    icon;
 
 }
 
-setInterval(updateClock,1000);
+window.onload = () => {
 
-updateClock();
+    updateClock();
+
+    setInterval(updateClock,1000);
+
+};
 
 const dotsContainer =
 document.getElementById('trackdots');
