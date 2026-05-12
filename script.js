@@ -61,6 +61,9 @@ async function loadWeather(){
     const humidity =
     data.main.humidity;
 
+    document.querySelector('.weatherinfo:nth-child(5)').innerHTML =
+    `💧 Humidity: ${humidity}%`;
+
     document.querySelector('.weatherinfo:nth-child(2)').innerHTML =
    `🌤️ ${weather.toUpperCase()}`;
 
