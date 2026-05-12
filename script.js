@@ -52,6 +52,39 @@ async function loadWeather(){
     const weather =
     data.weather[0].description;
 
+    let weatherIcon = '🌤️';
+
+if(weather.includes('rain')){
+
+    weatherIcon = '🌧️';
+
+}
+else if(weather.includes('cloud')){
+
+    weatherIcon = '☁️';
+
+}
+else if(weather.includes('clear')){
+
+    weatherIcon = '☀️';
+
+}
+else if(weather.includes('thunderstorm')){
+
+    weatherIcon = '⛈️';
+
+}
+else if(weather.includes('snow')){
+
+    weatherIcon = '❄️';
+
+}
+else if(weather.includes('mist')){
+
+    weatherIcon = '🌫️';
+
+}
+
     const temp =
     Math.round(data.main.temp);
 
@@ -65,7 +98,7 @@ async function loadWeather(){
     `💧 Humidity: ${humidity}%`;
 
     document.querySelector('.weatherinfo:nth-child(2)').innerHTML =
-   `🌤️ ${weather.toUpperCase()}`;
+    `${weatherIcon} ${weather.toUpperCase()}`;
 
     document.querySelector('.weatherinfo:nth-child(3)').innerHTML =
     `🌡️ Track Temp: ${temp}°C`;
