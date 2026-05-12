@@ -95,3 +95,54 @@ function updateClock(){
 setInterval(updateClock,1000);
 
 updateClock();
+
+const dotsContainer =
+document.getElementById('trackdots');
+
+const fakeCars = [];
+
+for(let i = 0; i < 5; i++){
+
+    const dot = document.createElement('div');
+
+    dot.className = 'dot';
+
+    dotsContainer.appendChild(dot);
+
+    fakeCars.push({
+
+        el:dot,
+
+        angle:Math.random() * 360,
+
+        radius:110 + Math.random() * 20
+
+    });
+
+}
+
+function animateFakeCars(){
+
+    fakeCars.forEach(car => {
+
+        car.angle += 0.5;
+
+        const x =
+        130 +
+        Math.cos(car.angle * Math.PI/180)
+        * car.radius;
+
+        const y =
+        130 +
+        Math.sin(car.angle * Math.PI/180)
+        * car.radius;
+
+        car.el.style.left = `${x}px`;
+
+        car.el.style.top = `${y}px`;
+
+    });
+
+}
+
+setInterval(animateFakeCars, 30);
