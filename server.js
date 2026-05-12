@@ -25,25 +25,29 @@ ws.on('message', (data) => {
 
     const text = data.toString();
 
+    if(text.includes('STX') || text.includes('STY')){
+
+        console.log(text);
+
+    }
+
     try {
 
         const json = JSON.parse(text);
 
-        // DATOS DE CARROS
         if(Array.isArray(json.RC)){
 
             latestCars = json.RC;
 
             console.clear();
 
-            console.log('🏁 Cars Loaded:', latestCars.length);
+            console.log('🏎️ Cars Loaded:', latestCars.length);
 
         }
 
     } catch(e){}
 
 });
-
 app.get('/api/timing', (req,res)=>{
 
     res.json(latestCars);
