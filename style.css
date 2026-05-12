@@ -1,0 +1,40 @@
+body{
+    margin:0;
+    background:transparent;
+    font-family:Arial;
+    overflow:hidden;
+}
+
+#leaderboard{
+    width:700px;
+    background:rgba(0,0,0,0.75);
+    border:2px solid #8DFF00;
+    color:white;
+    backdrop-filter:blur(10px);
+}
+
+.header,
+.row{
+    display:grid;
+    grid-template-columns:
+    40px
+    1fr
+    140px
+    70px
+    110px
+    80px;
+
+    padding:8px;
+    align-items:center;
+}
+
+.header{
+    background:#111;
+    color:#8DFF00;
+    font-weight:bold;
+}
+
+.row{
+    border-top:1px solid rgba(255,255,255,0.1);
+    font-size:14px;
+}
