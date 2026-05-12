@@ -123,34 +123,6 @@ function updateClock(){
     document.getElementById('clock').textContent =
     `${h}:${m}:${s}`;
 
-    const hour = now.getHours();
-
-    let icon = '☀️';
-
-    if(hour >= 6 && hour < 12){
-
-        icon = '🌅';
-
-    }
-    else if(hour >= 12 && hour < 18){
-
-        icon = '☀️';
-
-    }
-    else if(hour >= 18 && hour < 20){
-
-        icon = '🌇';
-
-    }
-    else{
-
-        icon = '🌙';
-
-    }
-
-    document.getElementById('dayicon').textContent =
-    icon;
-
 }
 
 window.onload = () => {
@@ -161,12 +133,57 @@ window.onload = () => {
 
 };
 
+const trackPoints = [
+
+    {x:195,y:78},
+    {x:170,y:95},
+    {x:145,y:125},
+    {x:135,y:165},
+    {x:128,y:210},
+    {x:138,y:255},
+    {x:160,y:295},
+    {x:195,y:330},
+    {x:240,y:355},
+    {x:285,y:365},
+    {x:320,y:350},
+    {x:345,y:320},
+    {x:365,y:290},
+    {x:395,y:265},
+    {x:430,y:245},
+    {x:470,y:220},
+    {x:510,y:195},
+    {x:550,y:170},
+    {x:590,y:145},
+    {x:625,y:120},
+    {x:655,y:98},
+    {x:690,y:88},
+    {x:715,y:100},
+    {x:725,y:130},
+    {x:710,y:165},
+    {x:685,y:195},
+    {x:650,y:220},
+    {x:610,y:230},
+    {x:570,y:225},
+    {x:535,y:210},
+    {x:510,y:195},
+    {x:490,y:220},
+    {x:495,y:255},
+    {x:520,y:280},
+    {x:555,y:285},
+    {x:595,y:270},
+    {x:630,y:245},
+    {x:660,y:215},
+    {x:690,y:180},
+    {x:710,y:140}
+
+];
+
 const dotsContainer =
 document.getElementById('trackdots');
 
 const fakeCars = [];
 
-for(let i = 0; i < 5; i++){
+for(let i = 0; i < 8; i++){
 
     const dot = document.createElement('div');
 
@@ -178,9 +195,7 @@ for(let i = 0; i < 5; i++){
 
         el:dot,
 
-        angle:Math.random() * 360,
-
-        radius:70 + Math.random() * 40
+        progress:i * 5
 
     });
 
@@ -190,24 +205,43 @@ function animateFakeCars(){
 
     fakeCars.forEach(car => {
 
-        car.angle += 0.8;
+        car.progress += 0.08;
+
+        if(car.progress >= trackPoints.length){
+
+            car.progress = 0;
+
+        }
+
+        const index =
+        Math.floor(car.progress);
+
+        const nextIndex =
+        (index + 1) % trackPoints.length;
+
+        const p1 =
+        trackPoints[index];
+
+        const p2 =
+        trackPoints[nextIndex];
+
+        const t =
+        car.progress - index;
 
         const x =
-        120 +
-        Math.cos(car.angle * Math.PI/180)
-        * car.radius;
+        p1.x + (p2.x - p1.x) * t;
 
         const y =
-        120 +
-        Math.sin(car.angle * Math.PI/180)
-        * car.radius;
+        p1.y + (p2.y - p1.y) * t;
 
-        car.el.style.left = `${x}px`;
+        car.el.style.left =
+        `${x}px`;
 
-        car.el.style.top = `${y}px`;
+        car.el.style.top =
+        `${y}px`;
 
     });
 
 }
 
-setInterval(animateFakeCars, 30);
+setInterval(animateFakeCars,16);

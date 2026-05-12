@@ -287,13 +287,22 @@ body{
 
     position:relative;
 
+    width:300px;
+
+    height:400px;
+
+    overflow:hidden;
+
 }
 
 #trackimg{
 
     width:100%;
 
-    position:relative;
+    position:absolute;
+
+    top:0;
+    left:0;
 
     z-index:1;
 
@@ -322,14 +331,17 @@ body{
 
     position:absolute;
 
-    width:10px;
-    height:10px;
+    width:12px;
+    height:12px;
 
     background:#00ff9d;
 
     border-radius:50%;
 
     box-shadow:
-    0 0 10px #00ff9d;
+    0 0 12px #00ff9d;
+
+    transform:
+    translate(-50%,-50%);
 
 }
