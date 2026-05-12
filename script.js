@@ -50,7 +50,7 @@ async function loadWeather(){
     const data = await response.json();
 
     const weather =
-    data.weather[0].main;
+    data.weather[0].description;
 
     const temp =
     Math.round(data.main.temp);
@@ -58,8 +58,11 @@ async function loadWeather(){
     const wind =
     Math.round(data.wind.speed);
 
+    const humidity =
+    data.main.humidity;
+
     document.querySelector('.weatherinfo:nth-child(2)').innerHTML =
-    `🌤️ ${weather}`;
+   `🌤️ ${weather.toUpperCase()}`;
 
     document.querySelector('.weatherinfo:nth-child(3)').innerHTML =
     `🌡️ Track Temp: ${temp}°C`;
