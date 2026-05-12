@@ -61,35 +61,3 @@ app.listen(PORT, '0.0.0.0', ()=>{
     console.log(`🚀 Running on port ${PORT}`);
 
 });
-const dotsContainer =
-document.getElementById('trackdots');
-
-const fakeCars = [];
-
-for(let i = 0; i < 5; i++){
-
-    const dot = document.createElement('div');
-
-    dot.className = 'dot';
-
-    dotsContainer.appendChild(dot);
-
-    fakeCars.push({
-
-        el:dot,
-
-        angle:Math.random() * 360,
-
-        radius:70 + Math.random() * 40
-
-    });
-
-}
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, '0.0.0.0', ()=>{
-
-    console.log(`🚀 Running on port ${PORT}`);
-
-});
