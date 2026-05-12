@@ -85,29 +85,3 @@ for(let i = 0; i < 5; i++){
     });
 
 }
-
-function animateFakeCars(){
-
-    fakeCars.forEach(car => {
-
-        car.angle += 0.8;
-
-        const x =
-        120 +
-        Math.cos(car.angle * Math.PI/180)
-        * car.radius;
-
-        const y =
-        120 +
-        Math.sin(car.angle * Math.PI/180)
-        * car.radius;
-
-        car.el.style.left = `${x}px`;
-
-        car.el.style.top = `${y}px`;
-
-    });
-
-}
-
-setInterval(animateFakeCars, 30);
