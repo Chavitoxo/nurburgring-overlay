@@ -76,3 +76,84 @@ body{
 
     color:#fff;
 }
+#rightpanel{
+
+    position:absolute;
+
+    top:0;
+    right:-330px;
+
+    width:300px;
+
+}
+
+.sessionbox,
+.weatherbox,
+.trackmap{
+
+    background:#07111b;
+
+    border:2px solid #18364d;
+
+    border-radius:8px;
+
+    margin-bottom:12px;
+
+    padding:14px;
+
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+
+}
+
+.sessiontitle{
+
+    color:#5ed8ff;
+
+    font-size:20px;
+
+    font-weight:800;
+
+}
+
+#clock{
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:800;
+
+    margin-top:10px;
+
+}
+
+.weathertitle{
+
+    color:#5ed8ff;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.weatherinfo{
+
+    color:white;
+
+    margin-top:8px;
+
+    font-size:14px;
+
+}
+
+#trackimg{
+
+    width:100%;
+
+    filter:
+    drop-shadow(0 0 10px #5ed8ff);
+
+}
