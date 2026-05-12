@@ -239,7 +239,9 @@ body{
 
     align-items:center;
 
-    gap:10px;
+    justify-content:flex-start;
+
+    gap:12px;
 
     margin-top:10px;
 
@@ -247,9 +249,9 @@ body{
 
 #dayicon{
 
-    width:40px;
+    font-size:28px;
 
-    height:40px;
+    width:32px;
 
     display:flex;
 
@@ -257,17 +259,13 @@ body{
 
     justify-content:center;
 
-    font-size:30px;
-
-    color:white;
-
 }
 
 #clock{
 
     color:#16d66b;
 
-    font-size:34px;
+    font-size:28px;
 
     font-weight:800;
 
