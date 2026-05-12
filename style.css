@@ -231,13 +231,23 @@ body{
 
     font-weight:800;
 
+    display:flex;
+
+    align-items:center;
+
 }
 
 #dayicon{
 
-    margin-right:8px;
+    display:inline-block;
 
-    font-size:20px;
+    width:30px;
+
+    font-size:22px;
+
+    font-family:'Segoe UI Emoji';
+
+    margin-right:6px;
 
 }
 
