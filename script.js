@@ -85,8 +85,11 @@ async function loadWeather(){
 
     }
 
-    const temp =
+    const trackTemp =
     Math.round(data.main.temp);
+
+    const airTemp =
+    Math.round(data.main.feels_like);
 
     const wind =
     Math.round(data.wind.speed);
@@ -98,10 +101,16 @@ async function loadWeather(){
     `${weatherIcon} ${weather.toUpperCase()}`;
 
     document.querySelector('.weatherinfo:nth-child(3)').innerHTML =
-    `🌡️ Track Temp: ${temp}°C`;
+    `🌡️ Track Temp: ${trackTemp}°C`;
 
     document.querySelector('.weatherinfo:nth-child(4)').innerHTML =
+    `🌬️ Air Temp: ${airTemp}°C`;
+
+    document.querySelector('.weatherinfo:nth-child(5)').innerHTML =
     `💨 Wind: ${wind} km/h`;
+
+    document.querySelector('.weatherinfo:nth-child(6)').innerHTML =
+    `💧 Humidity: ${humidity}%`;
 
     document.querySelector('.weatherinfo:nth-child(5)').innerHTML =
     `💧 Humidity: ${humidity}%`;
