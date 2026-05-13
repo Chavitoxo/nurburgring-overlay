@@ -129,6 +129,35 @@ function updateClock(){
     document.getElementById('clock').textContent =
     `${h}:${m}:${s}`;
 
+    const hour =
+    now.getHours();
+
+    let icon = '☀️';
+
+    if(hour >= 6 && hour < 12){
+
+        icon = '🌅';
+
+    }
+    else if(hour >= 12 && hour < 18){
+
+        icon = '☀️';
+
+    }
+    else if(hour >= 18 && hour < 20){
+
+        icon = '🌇';
+
+    }
+    else{
+
+        icon = '🌙';
+
+    }
+
+    document.getElementById('dayicon').textContent =
+    icon;
+
 }
 
 window.onload = () => {
