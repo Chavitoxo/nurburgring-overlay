@@ -203,23 +203,48 @@ body{
 
     width:300px;
 
-}
-
-.sessionbox,
-.weatherbox,
-.trackmap{
-
     background:#07111b;
 
     border:2px solid #18364d;
 
     border-radius:8px;
 
-    margin-bottom:12px;
+    overflow:hidden;
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,.4);
+
+}
+
+.sessionbox,
+.weatherbox,
+.trackmap{
+
+    width:100%;
+
+    background:transparent;
 
     padding:14px;
 
-    box-shadow:0 0 20px rgba(0,0,0,.4);
+    box-sizing:border-box;
+
+}
+
+.sessionbox,
+.weatherbox{
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+}
+
+.trackmap{
+
+    position:relative;
+
+    height:320px;
+
+    overflow:hidden;
 
 }
 
@@ -286,26 +311,6 @@ body{
 
 }
 
-.trackmap{
-
-    position:relative;
-
-    width:300px;
-
-    height:260px;
-
-    overflow:hidden;
-
-    background:#07111b;
-
-    border:2px solid #18364d;
-
-    border-radius:8px;
-
-    box-shadow:0 0 20px rgba(0,0,0,.4);
-
-}
-
 .tracktitle{
 
     position:absolute;
@@ -328,11 +333,11 @@ body{
 
 #trackimg{
 
-    width:85%;
+    width:80%;
 
     position:absolute;
 
-    top:40px;
+    top:55px;
 
     left:50%;
 
@@ -341,7 +346,7 @@ body{
     z-index:1;
 
     filter:
-    drop-shadow(0 0 10px #5ed8ff);
+    drop-shadow(0 0 12px #5ed8ff);
 
 }
 
@@ -349,11 +354,11 @@ body{
 
     position:absolute;
 
-    bottom:10px;
+    bottom:12px;
 
-    right:10px;
+    right:12px;
 
-    width:80px;
+    width:55px;
 
     z-index:10;
 

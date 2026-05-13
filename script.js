@@ -122,12 +122,26 @@ function updateClock(){
 
     const now = new Date();
 
-    const h = String(now.getHours()).padStart(2,'0');
-    const m = String(now.getMinutes()).padStart(2,'0');
-    const s = String(now.getSeconds()).padStart(2,'0');
+    let h =
+    now.getHours();
+
+    const m =
+    String(now.getMinutes()).padStart(2,'0');
+
+    const s =
+    String(now.getSeconds()).padStart(2,'0');
+
+    const period =
+    h >= 12 ? 'PM' : 'AM';
+
+    h =
+    h % 12 || 12;
+
+    h =
+    String(h).padStart(2,'0');
 
     document.getElementById('clock').textContent =
-    `${h}:${m}:${s}`;
+    `${h}:${m}:${s} ${period}`;
 
     const hour =
     now.getHours();
