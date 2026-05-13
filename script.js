@@ -1,57 +1,86 @@
 async function loadTiming(){
 
-    const response = await fetch('/api/timing');
+    try{
 
-    const data = await response.json();
+        const response =
+        await fetch('/api/timing?nocache=' + Date.now(), {
 
-    const rows = document.getElementById('rows');
+    cache:'no-store'
 
-    row.innerHTML = `
+});
 
-    <div>${car.POS || car.PID || '-'}</div>
+        const data =
+        await response.json();
 
-    <div>${car.NUM || car.N || '-'}</div>
+        console.log(data);
 
-    <div>${car.STATE || car.TRACKSTATE || 'RUN'}</div>
+        const rows =
+        document.getElementById('rows');
 
-    <div>${car.CLASS || car.CLS || 'GT3'}</div>
+        if(!rows){
 
-    <div>${car.NAME || car.SNAME || '-'}</div>
+            console.log(
+                '❌ rows not found'
+            );
 
-    <div>${car.LAPS || car.LAP || '-'}</div>
+            return;
 
-    <div>${car.GAP || '-'}</div>
+        }
 
-    <div>${car.LAST || car.LASTLAP || '-'}</div>
+        rows.innerHTML = '';
 
-    <div>${car.BEST || car.FASTESTLAP || '-'}</div>
+        data
+       .filter(car =>
+    car.NUM ||
+    car.CAR
+)
+        .slice(0,15)
+        .forEach(car => {
 
-    <div>${car.PIT || 'OUT'}</div>
+            const row =
+            document.createElement('div');
 
-    <div>${car.VEH || car.TEAM || '-'}</div>
+            row.className = 'row';
 
-`;
+            row.innerHTML = `
 
-    data
-    .slice(0,20)
-    .forEach(car => {
+                <div>${car.POSITION || car.RANK || '-'}</div>
 
-        const row = document.createElement('div');
+                <div>${car.NUM || '-'}</div>
 
-        row.className = 'row';
+                <div>${car.TRACKSTATE || 'RUN'}</div>
 
-        row.innerHTML = `
-            <div>${car.POS || '-'}</div>
-            <div>${car.TEAM || '-'}</div>
-            <div>${car.NAME || '-'}</div>
-            <div>${car.LAPS || '-'}</div>
-            <div>${car.FASTESTLAP || '-'}</div>
-            <div>${car.GAP || '-'}</div>
-        `;
+                <div>${car.CLASSNAME || '-'}</div>
 
-        rows.appendChild(row);
+                <div>${car.DRIVER || car.NAME || '-'}</div>
 
-    });
+                <div>${car.LAPS || '-'}</div>
+
+                <div>${car.GAP || '-'}</div>
+
+                <div>${car.LASTLAPTIME || car.LASTTIME || '-'}</div>
+
+                <div>${car.FASTESTLAP || '-'}</div>
+
+                <div>${car.PITCOUNT || '-'}</div>
+
+                <div>${car.CAR || '-'}</div>
+
+            `;
+
+            rows.appendChild(row);
+
+        });
+
+    }
+    catch(error){
+
+        console.log(
+            '❌ FRONTEND ERROR:',
+            error
+        );
+
+    }
 
 }
 
@@ -251,7 +280,11 @@ updateSessionInfo();
 async function loadSessionInfo(){
 
     const response =
-    await fetch('/api/session');
+    await fetch('/api/session?nocache=' + Date.now(), {
+
+    cache:'no-store'
+    
+    });
 
     const data =
     await response.json();

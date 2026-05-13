@@ -7,70 +7,123 @@ app.use(express.static(__dirname));
 
 let latestCars = [];
 
-const ws = new WebSocket('wss://livetiming.azurewebsites.net');
+let sessionInfo = {
+
+    session:'RACE',
+
+    timeRemaining:'00:00:00',
+
+    trackState:'GREEN'
+
+};
+
+const ws =
+new WebSocket('wss://livetiming.azurewebsites.net');
 
 ws.on('open', () => {
 
     console.log('🔥 Connected');
 
     ws.send(JSON.stringify({
-        eventId: "50",
-        eventPid:[0,1,2,3,4,5,6,7,8],
-        clientLocalTime: Date.now()
+
+        eventId:"50",
+
+        eventPid:[0,4],
+
+        clientLocalTime:Date.now()
+
     }));
 
 });
 
 ws.on('message', (data) => {
 
-    const text = data.toString();
+    try{
 
-    if(text.includes('STX') || text.includes('STY')){
+        const json =
+        JSON.parse(data.toString());
 
-        console.log(text);
+        // LIVE CARS
+
+        if(Array.isArray(json.RC)){
+
+            latestCars = json.RC;
+
+            console.clear();
+
+            console.log(
+                `🏎️ Cars Loaded: ${latestCars.length}`
+            );
+
+        }
+
+        // SESSION INFO
+
+        if(json.TRACKSTATE){
+
+            sessionInfo.trackState =
+            json.TRACKSTATE;
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            '❌ Parse Error:',
+            error.message
+        );
 
     }
 
-    try {
+});
 
-        const json = JSON.parse(text);
-
-        console.log(json);
-
-        const cars =
-
-    json.RC ||
-    json.R ||
-    json.CARS ||
-    json.cars;
-
-if(cars && Array.isArray(cars)){
-
-    latestCars = cars;
-
-    console.clear();
+ws.on('error', (error) => {
 
     console.log(
-        `🏎️ Cars Loaded: ${latestCars.length}`
+        '❌ Error:',
+        error.message
     );
 
-    console.log(cars[0]);
+});
 
-}
+ws.on('close', () => {
 
-    } catch(e){}
+    console.log(
+        '⚠️ Closed'
+    );
 
 });
+
 app.get('/api/timing', (req,res)=>{
+
+    res.setHeader(
+        'Cache-Control',
+        'no-store'
+    );
 
     res.json(latestCars);
 
 });
 
-const PORT = process.env.PORT || 3000;
+app.get('/api/session', (req,res)=>{
 
-app.listen(PORT, '0.0.0.0', ()=>{
+    res.setHeader(
+        'Cache-Control',
+        'no-store'
+    );
 
-    console.log(`🚀 Running on port ${PORT}`);
+    res.json(sessionInfo);
+
+});
+
+const PORT =
+process.env.PORT || 3000;
+
+app.listen(PORT, ()=>{
+
+    console.log(
+        `🚀 Running on ${PORT}`
+    );
 
 });

@@ -515,24 +515,26 @@ body::before{
     }
 
     .header,
-    .row{
+.row{
 
-        grid-template-columns:
-        40px
-        45px
-        55px
-        60px
-        120px
-        55px
-        70px
-        85px
-        85px
-        45px
-        90px;
+    display:grid;
 
-        font-size:11px;
+    grid-template-columns:
+    50px
+    60px
+    90px
+    90px
+    220px
+    70px
+    90px
+    120px
+    120px
+    70px
+    1fr;
 
-    }
+    align-items:center;
+
+}
 
     #rightpanel{
 
@@ -563,5 +565,20 @@ body::before{
         font-size:24px;
 
     }
+
+}
+#rows{
+
+    display:block;
+
+    width:100%;
+
+    min-height:400px;
+
+}
+
+.row{
+
+    display:grid !important;
 
 }
