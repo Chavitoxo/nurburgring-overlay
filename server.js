@@ -7,57 +7,87 @@ app.use(express.static(__dirname));
 
 let latestCars = [];
 
-const ws = new WebSocket('wss://livetiming.azurewebsites.net');
+const ws =
+new WebSocket('wss://livetiming.azurewebsites.net');
 
 ws.on('open', () => {
 
-    console.log('🔥 Connected');
+    console.log('🔥 Connected to Live Timing');
 
     ws.send(JSON.stringify({
-        eventId: "50",
-        eventPid: [0,4],
-        clientLocalTime: Date.now()
+
+        eventId:"50",
+
+        eventPid:[0,4],
+
+        clientLocalTime:Date.now()
+
     }));
 
 });
 
 ws.on('message', (data) => {
 
-    const text = data.toString();
+    const text =
+    data.toString();
 
-    if(text.includes('STX') || text.includes('STY')){
+    try{
 
-        console.log(text);
-
-    }
-
-    try {
-
-        const json = JSON.parse(text);
+        const json =
+        JSON.parse(text);
 
         if(Array.isArray(json.RC)){
 
-            latestCars = json.RC;
+            latestCars =
+            json.RC;
 
             console.clear();
 
-            console.log('🏎️ Cars Loaded:', latestCars.length);
+            console.log(
+                `🏎️ Cars Loaded: ${latestCars.length}`
+            );
 
         }
 
-    } catch(e){}
+    }
+    catch(error){
+
+        // ignore invalid packets
+
+    }
 
 });
-app.get('/api/timing', (req,res)=>{
+
+ws.on('error', (error) => {
+
+    console.log(
+        '❌ WebSocket Error:',
+        error.message
+    );
+
+});
+
+ws.on('close', () => {
+
+    console.log(
+        '⚠️ Connection Closed'
+    );
+
+});
+
+app.get('/api/timing', (req,res) => {
 
     res.json(latestCars);
 
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT =
+process.env.PORT || 3000;
 
-app.listen(PORT, '0.0.0.0', ()=>{
+app.listen(PORT,'0.0.0.0',() => {
 
-    console.log(`🚀 Running on port ${PORT}`);
+    console.log(
+        `🚀 Running on port ${PORT}`
+    );
 
 });

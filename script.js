@@ -112,9 +112,6 @@ async function loadWeather(){
     document.querySelector('.weatherinfo:nth-child(6)').innerHTML =
     `💧 Humidity: ${humidity}%`;
 
-    document.querySelector('.weatherinfo:nth-child(5)').innerHTML =
-    `💧 Humidity: ${humidity}%`;
-
 }
 
 loadWeather();
