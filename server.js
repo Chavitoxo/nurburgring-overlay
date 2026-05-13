@@ -15,7 +15,7 @@ ws.on('open', () => {
 
     ws.send(JSON.stringify({
         eventId: "50",
-        eventPid: [0,4],
+        eventPid:[0,1,2,3,4,5,6,7,8],
         clientLocalTime: Date.now()
     }));
 
