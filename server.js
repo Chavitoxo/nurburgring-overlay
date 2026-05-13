@@ -7,6 +7,16 @@ app.use(express.static(__dirname));
 
 let latestCars = [];
 
+let sessionInfo = {
+
+    session:'RACE',
+
+    timeRemaining:'00:00:00',
+
+    trackState:'GREEN'
+
+};
+
 const ws =
 new WebSocket('wss://livetiming.azurewebsites.net');
 
@@ -49,6 +59,27 @@ ws.on('message', (data) => {
 
         }
 
+        if(json.STA){
+
+            sessionInfo.trackState =
+            json.STA;
+
+        }
+
+        if(json.RT){
+
+            sessionInfo.timeRemaining =
+            json.RT;
+
+        }
+
+        if(json.SN){
+
+            sessionInfo.session =
+            json.SN;
+
+        }
+
     }
     catch(error){
 
@@ -78,6 +109,12 @@ ws.on('close', () => {
 app.get('/api/timing', (req,res) => {
 
     res.json(latestCars);
+
+});
+
+app.get('/api/session', (req,res) => {
+
+    res.json(sessionInfo);
 
 });
 
