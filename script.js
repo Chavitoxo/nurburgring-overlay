@@ -8,32 +8,32 @@ async function loadTiming(){
 
     row.innerHTML = `
 
-    <div>${car.POS || '-'}</div>
+    <div>${car.POS || car.PID || '-'}</div>
 
-    <div>${car.NUM || '-'}</div>
+    <div>${car.NUM || car.N || '-'}</div>
 
-    <div>${car.STATE || 'RUN'}</div>
+    <div>${car.STATE || car.TRACKSTATE || 'RUN'}</div>
 
-    <div>${car.CLASS || 'GT3'}</div>
+    <div>${car.CLASS || car.CLS || 'GT3'}</div>
 
-    <div>${car.NAME || '-'}</div>
+    <div>${car.NAME || car.SNAME || '-'}</div>
 
-    <div>${car.LAPS || '-'}</div>
+    <div>${car.LAPS || car.LAP || '-'}</div>
 
     <div>${car.GAP || '-'}</div>
 
-    <div>${car.LASTLAP || '-'}</div>
+    <div>${car.LAST || car.LASTLAP || '-'}</div>
 
-    <div>${car.FASTESTLAP || '-'}</div>
+    <div>${car.BEST || car.FASTESTLAP || '-'}</div>
 
     <div>${car.PIT || 'OUT'}</div>
 
-    <div>${car.TEAM || '-'}</div>
+    <div>${car.VEH || car.TEAM || '-'}</div>
 
 `;
 
     data
-    .slice(0,10)
+    .slice(0,20)
     .forEach(car => {
 
         const row = document.createElement('div');

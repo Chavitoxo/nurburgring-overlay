@@ -37,15 +37,26 @@ ws.on('message', (data) => {
 
         console.log(json);
 
-        if(json.RC && Array.isArray(json.RC)){
+        const cars =
 
-            latestCars = json.RC;
+    json.RC ||
+    json.R ||
+    json.CARS ||
+    json.cars;
 
-            console.clear();
+if(cars && Array.isArray(cars)){
 
-            console.log('🏎️ Cars Loaded:', latestCars.length);
+    latestCars = cars;
 
-        }
+    console.clear();
+
+    console.log(
+        `🏎️ Cars Loaded: ${latestCars.length}`
+    );
+
+    console.log(cars[0]);
+
+}
 
     } catch(e){}
 
