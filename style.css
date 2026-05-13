@@ -231,18 +231,6 @@ body{
 
     font-weight:800;
 
-    display:flex;
-
-    align-items:center;
-
-}
-
-#dayicon{
-
-    margin-left:8px;
-
-    font-size:22px;
-
 }
 
 #timebox{
@@ -308,40 +296,5 @@ body{
 
     filter:
     drop-shadow(0 0 10px #5ed8ff);
-
-}
-
-#trackdots{
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-    z-index:5;
-
-    pointer-events:none;
-
-}
-
-.dot{
-
-    position:absolute;
-
-    width:12px;
-    height:12px;
-
-    background:#00ff9d;
-
-    border-radius:50%;
-
-    box-shadow:
-    0 0 12px #00ff9d;
-
-    transform:
-    translate(-50%,-50%);
 
 }
