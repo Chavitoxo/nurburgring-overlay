@@ -35,7 +35,9 @@ ws.on('message', (data) => {
 
         const json = JSON.parse(text);
 
-        if(Array.isArray(json.RC)){
+        console.log(json);
+
+        if(json.RC && Array.isArray(json.RC)){
 
             latestCars = json.RC;
 
